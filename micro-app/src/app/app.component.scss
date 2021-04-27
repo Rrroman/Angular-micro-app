@@ -1,0 +1,45 @@
+.header {
+  background-color: #718bff;
+
+  &__container {
+    margin: 0 auto;
+    padding: 1rem 4rem;
+    max-width: 1280px;
+  }
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.active {
+  font-weight: 900;
+}
+
+.main {
+  height: calc(100% - 90px);
+
+  &__container {
+    margin: 0 auto;
+    padding: 1rem 4rem;
+    max-width: 1280px;
+  }
+}
+
+.footer {
+  background-color: #718bff;
+
+  &__container {
+    margin: 0 auto;
+    padding: 1rem 4rem;
+    max-width: 1280px;
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}
