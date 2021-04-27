@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "MSYS2_ARG_CONV_EXCL='--base-href=' ng deploy --base-href=/Angular-micro-app/"
+    "for deploy first half": "MSYS2_ARG_CONV_EXCL='--base-href='",
+    "deploy": "ng deploy --base-href=/Angular-micro-app/"
   },
   "private": true,
   "dependencies": {
