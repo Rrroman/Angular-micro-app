@@ -1,0 +1,14 @@
+.info {
+  &__title,
+  &__subtitle {
+    margin: 1rem 1rem 0 1rem;
+  }
+
+  &__subtitle {
+    font-weight: 500;
+  }
+
+  &__link {
+    color: #718bff;
+  }
+}
