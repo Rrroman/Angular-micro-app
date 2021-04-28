@@ -1,0 +1,20 @@
+<header class="header">
+  <div class="header__container">
+    <ul class="navbar">
+      <li class="navbar__link">
+        <a
+          routerLinkActive="active"
+          routerLink="/"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a
+        >
+      </li>
+      <li class="navbar__link">
+        <a routerLinkActive="active" routerLink="/info">Info</a>
+      </li>
+      <li class="navbar__link">
+        <a routerLinkActive="active" routerLink="/projects">Projects</a>
+      </li>
+    </ul>
+  </div>
+</header>
