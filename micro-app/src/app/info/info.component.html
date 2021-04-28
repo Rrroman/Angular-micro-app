@@ -1,4 +1,4 @@
-<article class="info">
+<article class="info row">
   <h2 class="info__title">About me:</h2>
   <ul>
     <li>Full name: Roman Kohutiak.</li>
@@ -8,7 +8,7 @@
   <h3 class="info__subtitle">Certificates:</h3>
   <ul>
     <li>
-      2020.09 – 2021.02 The Rolling Scopes: JS Front End Course.
+      {{ rs[0].startDate + " - " + rs[0].endDate + rs[0].name }}
       <a
         class="linkedin info__link"
         href="https://rrroman.github.io/certificates/images/certificate-rs-front-end-2020-2021.png"
