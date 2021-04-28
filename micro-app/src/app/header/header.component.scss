@@ -16,11 +16,17 @@
 
   font-size: 2rem;
 
-  &__link {
+  &__link-wrapper {
     transition: transform 0.3s ease-out;
 
     &:hover {
       transform: translate(0, -5px);
     }
+  }
+
+  &__link {
+    display: flex;
+    align-content: center;
+    line-height: 2.4rem;
   }
 }
