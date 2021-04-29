@@ -1,0 +1,23 @@
+<div class="notes__container">
+  <form (ngSubmit)="addNote()" class="notes__form">
+    <mat-form-field class="notes__field">
+      <mat-label>Text notes</mat-label>
+      <input
+        class="notes__input"
+        type="text"
+        value="{{ note }}"
+        matInput
+        placeholder="Write here some notes..."
+        (input)="onTypingNote($event)"
+      />
+    </mat-form-field>
+    <button
+      type="submit"
+      class="notes__button"
+      mat-raised-button
+      color="primary"
+    >
+      Primary
+    </button>
+  </form>
+</div>

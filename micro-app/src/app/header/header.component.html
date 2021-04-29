@@ -9,17 +9,13 @@
             routerLink="/"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            <mat-icon aria-hidden="false" aria-label="Example home icon">
-              home
-            </mat-icon>
+            <mat-icon aria-hidden="false" aria-label="home"> home </mat-icon>
             Home
           </a>
         </li>
         <li class="navbar__link-wrapper">
           <a class="navbar__link" routerLinkActive="active" routerLink="/info">
-            <mat-icon aria-hidden="false" aria-label="Example home icon">
-              info
-            </mat-icon>
+            <mat-icon aria-hidden="false" aria-label="info"> info </mat-icon>
             Info
           </a>
         </li>
@@ -29,10 +25,22 @@
             routerLinkActive="active"
             routerLink="/projects"
           >
-            <mat-icon aria-hidden="false" aria-label="Example home icon">
+            <mat-icon aria-hidden="false" aria-label="projects">
               work
             </mat-icon>
             Projects
+          </a>
+        </li>
+        <li class="navbar__link-wrapper">
+          <a
+            class="navbar__link"
+            routerLinkActive="active"
+            routerLink="/text-notes"
+          >
+            <mat-icon aria-hidden="false" aria-label="text notes">
+              text_snippet
+            </mat-icon>
+            Text-notes
           </a>
         </li>
       </ul>

@@ -9,6 +9,10 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { InfoComponent } from './info/info.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { TextNotesComponent } from './text-notes/text-notes.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,12 +22,16 @@ import { ProjectsComponent } from './projects/projects.component';
     ProjectsComponent,
     HeaderComponent,
     FooterComponent,
+    TextNotesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
