@@ -14,13 +14,25 @@
     </mat-form-field>
     <span [ngStyle]="{ color: color }" *ngIf="isTyping"> Typing ... </span>
     <button
-      type="submit"
       class="notes__button"
       mat-raised-button
       color="primary"
       [disabled]="note.trim() === ''"
+      [ngClass]="{ success: note.length > 10 }"
     >
       Add note
     </button>
   </form>
+  <ul>
+    <li class="notes__note" *ngFor="let note of notes">
+      {{ note }}
+      <button
+        (click)="onDeleteNote(note)"
+        mat-icon-button
+        aria-label="delete note button"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </li>
+  </ul>
 </div>

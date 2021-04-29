@@ -24,7 +24,7 @@ export class InfoComponent implements OnInit {
         'https://rrroman.github.io/certificates/images/certificate-rs-front-end-2020-2021.png',
     },
     {
-      name: 'React Course. Link incoming.',
+      name: 'React Course. Link in progress.',
       startDate: 2021.02,
       endDate: 2021.04,
     },
