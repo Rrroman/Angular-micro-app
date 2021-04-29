@@ -33,8 +33,7 @@ export class TextNotesComponent implements OnInit {
     }, 2000);
   }
 
-  onDeleteNote(currentNote) {
-    console.log(currentNote);
+  onDeleteNote(currentNote: string) {
     this.notes = this.notes.filter((note) => note !== currentNote);
   }
 
