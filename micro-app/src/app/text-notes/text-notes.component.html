@@ -5,19 +5,22 @@
       <input
         class="notes__input"
         type="text"
-        value="{{ note }}"
+        name="note"
         matInput
         placeholder="Write here some notes..."
         (input)="onTypingNote($event)"
+        [(ngModel)]="note"
       />
     </mat-form-field>
+    <span [ngStyle]="{ color: color }" *ngIf="isTyping"> Typing ... </span>
     <button
       type="submit"
       class="notes__button"
       mat-raised-button
       color="primary"
+      [disabled]="note.trim() === ''"
     >
-      Primary
+      Add note
     </button>
   </form>
 </div>
