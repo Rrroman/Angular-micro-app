@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./text-notes.component.scss'],
 })
 export class TextNotesComponent implements OnInit {
-  note: string = '';
-  isTyping: boolean = false;
+  note = '';
+  isTyping = false;
   color: string;
   notes: Array<string> = [];
 
@@ -19,8 +19,8 @@ export class TextNotesComponent implements OnInit {
     }
   }
 
-  onTypingNote(event: Event) {
-    this.note = (<HTMLInputElement>event.target).value;
+  onTypingNote(event: Event): void {
+    this.note = (event.target as HTMLInputElement).value;
     this.colorize();
 
     if (this.isTyping) {
@@ -33,17 +33,17 @@ export class TextNotesComponent implements OnInit {
     }, 2000);
   }
 
-  onDeleteNote(currentNote: string) {
+  onDeleteNote(currentNote: string): void {
     this.notes = this.notes.filter((note) => note !== currentNote);
   }
 
-  addNote() {
+  addNote(): void {
     this.notes.push(this.note);
     localStorage.setItem('notes', JSON.stringify(this.notes));
     this.note = '';
   }
 
-  colorize() {
+  colorize(): void {
     this.color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   }
 }

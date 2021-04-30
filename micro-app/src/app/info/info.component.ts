@@ -13,6 +13,7 @@ type skill = {
   name: string;
   description: string;
 };
+
 type skills = Array<skill>;
 
 @Component({
