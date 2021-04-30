@@ -1,9 +1,16 @@
-<article class="info">
+<section class="info">
   <h2 class="info__title">About me:</h2>
   <ul>
     <li>Full name: Roman Kohutiak.</li>
     <li>Age: 31</li>
     <li>Location: Ukraine, Ivano-Frankivsk.</li>
+  </ul>
+  <h2 class="info__title">Skills:</h2>
+  <ul>
+    <li *ngFor="let skill of skills">
+      <ins>{{ skill.name }}</ins
+      >{{ skill.description }}
+    </li>
   </ul>
   <h3 class="info__subtitle">Certificates:</h3>
   <ul>
@@ -31,4 +38,4 @@
     I love to play table tennis and team sports, competitive and company games,
     jumping rope.
   </p>
-</article>
+</section>
