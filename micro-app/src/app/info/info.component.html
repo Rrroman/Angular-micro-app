@@ -1,41 +1,51 @@
 <section class="info">
-  <h2 class="info__title">About me:</h2>
-  <ul>
-    <li>Full name: Roman Kohutiak.</li>
-    <li>Age: 31</li>
-    <li>Location: Ukraine, Ivano-Frankivsk.</li>
-  </ul>
-  <h2 class="info__title">Skills:</h2>
-  <ul>
-    <li *ngFor="let skill of skills">
-      <ins>{{ skill.name }}</ins
-      >{{ skill.description }}
-    </li>
-  </ul>
-  <h3 class="info__subtitle">Certificates:</h3>
-  <ul>
-    <li>
-      {{ rs[0].startDate + " - " + rs[0].endDate + " " + rs[0].name }}
-      <a
-        class="linkedin info__link"
-        href="https://rrroman.github.io/certificates/images/certificate-rs-front-end-2020-2021.png"
-        target="_blank"
-      >
-        Link
-      </a>
-    </li>
-    <li
-      [innerText]="rs[1].startDate + ' - ' + rs[1].endDate + ' ' + rs[1].name"
-    ></li>
-  </ul>
-  <h3 class="info__subtitle">Personality:</h3>
-  <p>
-    Punctual, communicable, responsible, consistent, dedicated, motivated
-    individual with willing to learn new things.
-  </p>
-  <h3 class="info__subtitle">Hobbies:</h3>
-  <p>
-    I love to play table tennis and team sports, competitive and company games,
-    jumping rope.
-  </p>
+  <article class="article">
+    <h2 class="info__title">About me:</h2>
+    <ul>
+      <li>Full name: Roman Kohutiak.</li>
+      <li>Age: 31</li>
+      <li>Location: Ukraine, Ivano-Frankivsk.</li>
+    </ul>
+  </article>
+  <article class="article">
+    <h2 class="info__title">Skills:</h2>
+    <ul>
+      <li *ngFor="let skill of skills">
+        <ins>{{ skill.name }}</ins
+        >{{ skill.description }}
+      </li>
+    </ul>
+  </article>
+  <article class="article">
+    <h3 class="info__subtitle">Certificates:</h3>
+    <ul>
+      <li>
+        {{ rs[0].startDate + " - " + rs[0].endDate + " " + rs[0].name }}
+        <a
+          class="linkedin info__link"
+          href="https://rrroman.github.io/certificates/images/certificate-rs-front-end-2020-2021.png"
+          target="_blank"
+        >
+          Link
+        </a>
+      </li>
+      <li
+        [innerText]="rs[1].startDate + ' - ' + rs[1].endDate + ' ' + rs[1].name"
+      ></li>
+    </ul>
+  </article>
+  <article class="article">
+    <h3 class="info__subtitle">Personality:</h3>
+    <p>
+      Punctual, communicable, responsible, consistent, dedicated, motivated
+      individual with willing to learn new things.
+    </p>
+  </article>
+  <article class="article">
+    <h3 class="info__subtitle">Hobbies:</h3>
+    <p>
+      I love to play table tennis and team sports, competitive and company
+      games, jumping rope.
+    </p>
+  </article>
 </section>
