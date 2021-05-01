@@ -1,0 +1,10 @@
+<li class="note" [ngClass]="{ success: noteIndex % 2 != 0 }">
+  {{ note }}
+  <button
+    (click)="onNoteDeleted()"
+    mat-icon-button
+    aria-label="delete note button"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</li>

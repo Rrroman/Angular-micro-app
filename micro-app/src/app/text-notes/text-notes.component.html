@@ -24,15 +24,11 @@
     </button>
   </form>
   <ul>
-    <li class="notes__note" *ngFor="let note of notes">
-      {{ note }}
-      <button
-        (click)="onDeleteNote(note)"
-        mat-icon-button
-        aria-label="delete note button"
-      >
-        <mat-icon>delete</mat-icon>
-      </button>
-    </li>
+    <app-text-note
+      *ngFor="let note of notes; let i = index"
+      [noteIndex]="i"
+      [textForNote]="note"
+      (deleteNote)="onNoteDeleted($event)"
+    ></app-text-note>
   </ul>
 </section>

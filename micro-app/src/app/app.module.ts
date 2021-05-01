@@ -13,6 +13,8 @@ import { TextNotesComponent } from './text-notes/text-notes.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { TextNoteComponent } from './text-notes/text-note/text-note.component';
+import { AddNoteComponent } from './text-notes/add-note/add-note.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     TextNotesComponent,
+    TextNoteComponent,
+    AddNoteComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,7 @@ export class TextNotesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    if (localStorage.getItem('notes').length > 0) {
+    if (localStorage.getItem('notes')?.length > 0) {
       this.notes.push(...JSON.parse(localStorage.getItem('notes')));
     }
   }
@@ -33,9 +33,14 @@ export class TextNotesComponent implements OnInit {
     }, 2000);
   }
 
-  onDeleteNote(currentNote: string): void {
-    this.notes = this.notes.filter((note) => note !== currentNote);
+  onNoteDeleted(noteData: { currentNote: string }): void {
+    this.notes = this.notes.filter((note) => note !== noteData.currentNote);
+    localStorage.setItem('notes', JSON.stringify(this.notes));
   }
+  // onNoteDeleted(currentNote: string): void {
+  //   this.notes = this.notes.filter((note) => note !== currentNote);
+  //   localStorage.setItem('notes', JSON.stringify(this.notes));
+  // }
 
   addNote(): void {
     this.notes.push(this.note);

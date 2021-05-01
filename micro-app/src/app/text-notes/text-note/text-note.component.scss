@@ -1,0 +1,16 @@
+.note {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0.5rem 0;
+  padding: 1rem;
+
+  background-color: cornflowerblue;
+  border-radius: 10px;
+}
+
+.success {
+  background-color: rgb(3, 190, 3);
+}
