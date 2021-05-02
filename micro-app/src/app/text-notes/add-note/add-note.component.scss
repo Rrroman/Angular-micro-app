@@ -1,0 +1,29 @@
+.notes {
+  &__container {
+    max-width: 850px;
+    margin: 0 auto;
+  }
+  &__form {
+    width: 90%;
+  }
+
+  &__field {
+    width: 90%;
+  }
+
+  &__label {
+    display: block;
+  }
+
+  &__input {
+    width: 100%;
+  }
+
+  &__button {
+    display: block;
+  }
+}
+
+.success {
+  background-color: rgb(3, 190, 3);
+}

@@ -1,28 +1,5 @@
 <section class="notes__container">
-  <form (ngSubmit)="addNote()" class="notes__form">
-    <mat-form-field class="notes__field">
-      <mat-label>Text notes</mat-label>
-      <input
-        class="notes__input"
-        type="text"
-        name="note"
-        matInput
-        placeholder="Write here some notes..."
-        (input)="onTypingNote($event)"
-        [(ngModel)]="note"
-      />
-    </mat-form-field>
-    <span [ngStyle]="{ color: color }" *ngIf="isTyping"> Typing ... </span>
-    <button
-      class="notes__button"
-      mat-raised-button
-      color="primary"
-      [disabled]="note.trim() === ''"
-      [ngClass]="{ success: note.length > 10 }"
-    >
-      Add note
-    </button>
-  </form>
+  <app-add-note (noteAdded)="onNoteAdded($event)"></app-add-note>
   <ul>
     <app-text-note
       *ngFor="let note of notes; let i = index"
