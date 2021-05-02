@@ -4,7 +4,7 @@
     <app-text-note
       *ngFor="let note of notes; let i = index"
       [noteIndex]="i"
-      [textForNote]="note"
+      [note]="note"
       (deleteNote)="onNoteDeleted($event)"
     ></app-text-note>
   </ul>

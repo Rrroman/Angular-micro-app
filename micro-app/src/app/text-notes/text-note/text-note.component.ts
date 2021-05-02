@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./text-note.component.scss'],
 })
 export class TextNoteComponent implements OnInit {
-  @Input('textForNote') note: string;
+  @Input() note: string;
   @Input() noteIndex: number;
   @Output() deleteNote = new EventEmitter<{ currentNote: string }>();
 
@@ -14,7 +14,7 @@ export class TextNoteComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onNoteDeleted() {
+  onNoteDeleted(): void {
     this.deleteNote.emit({ currentNote: this.note });
   }
 }
