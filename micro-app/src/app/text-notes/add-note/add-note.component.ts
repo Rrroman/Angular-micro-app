@@ -31,6 +31,7 @@ export class AddNoteComponent implements OnInit {
 
   onNoteAdded(): void {
     this.noteAdded.emit(this.note);
+    this.note = '';
   }
 
   colorize(): void {
