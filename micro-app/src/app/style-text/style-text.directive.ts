@@ -1,17 +1,24 @@
-import { Directive, ElementRef, OnInit } from '@angular/core';
+import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appStyleText]',
 })
 export class StyleTextDirective implements OnInit {
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit(): void {
-    this.elementRef.nativeElement.style.cssText = `
-      background-color: bisque;
-      padding: 6px;
-      border-radius: 10px;
-      color: darkslategrey;
-      text-align: center`;
+    const domElement = this.elementRef.nativeElement;
+
+    const allStyles = {
+      'background-color': 'bisque',
+      padding: '6px',
+      'border-radius': '10px',
+      color: 'darkslategrey',
+      'text-align': 'center',
+    };
+
+    Object.keys(allStyles).forEach((styleName) => {
+      this.renderer.setStyle(domElement, styleName, allStyles[styleName]);
+    });
   }
 }
