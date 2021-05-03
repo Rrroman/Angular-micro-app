@@ -6,7 +6,7 @@ import { Directive, ElementRef, OnInit } from '@angular/core';
 export class StyleTextDirective implements OnInit {
   constructor(private elementRef: ElementRef) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.elementRef.nativeElement.style.cssText = `
       background-color: bisque;
       padding: 6px;
