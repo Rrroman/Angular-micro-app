@@ -29,9 +29,16 @@
           Link
         </a>
       </li>
-      <li
-        [innerText]="rs[1].startDate + ' - ' + rs[1].endDate + ' ' + rs[1].name"
-      ></li>
+      <li>
+        {{ rs[1].startDate + " - " + rs[1].endDate + " " + rs[1].name }}
+        <a
+          class="linkedin info__link"
+          href="https://rrroman.github.io/certificates/images/certificate-rs-react-2021.png"
+          target="_blank"
+        >
+          Link
+        </a>
+      </li>
     </ul>
   </article>
   <article class="article">
