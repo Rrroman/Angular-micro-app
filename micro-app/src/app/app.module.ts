@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { TextNoteComponent } from './text-notes/text-note/text-note.component';
 import { AddNoteComponent } from './text-notes/add-note/add-note.component';
+import { StyleTextDirective } from './style-text/style-text.directive';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AddNoteComponent } from './text-notes/add-note/add-note.component';
     TextNotesComponent,
     TextNoteComponent,
     AddNoteComponent,
+    StyleTextDirective,
   ],
   imports: [
     BrowserModule,
