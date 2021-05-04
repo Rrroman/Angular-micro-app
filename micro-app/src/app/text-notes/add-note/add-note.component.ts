@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LoggingService } from 'src/app/logging.service';
 
 @Component({
   selector: 'app-add-note',
   templateUrl: './add-note.component.html',
   styleUrls: ['./add-note.component.scss'],
+  providers: [LoggingService],
 })
 export class AddNoteComponent implements OnInit {
   @Output() noteAdded = new EventEmitter<string>();
@@ -11,7 +13,7 @@ export class AddNoteComponent implements OnInit {
   isTyping = false;
   color: string;
 
-  constructor() {}
+  constructor(private loggingService: LoggingService) {}
 
   ngOnInit(): void {}
 
@@ -29,9 +31,12 @@ export class AddNoteComponent implements OnInit {
     }, 2000);
   }
 
-  onNoteAdded(): void {
+  onNoteAdded(event): void {
     this.noteAdded.emit(this.note);
     this.note = '';
+    this.loggingService.logEventToConsole(
+      event.target.querySelector('.mat-button-wrapper').textContent
+    );
   }
 
   colorize(): void {
