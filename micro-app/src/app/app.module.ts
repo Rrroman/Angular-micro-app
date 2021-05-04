@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { TextNoteComponent } from './text-notes/text-note/text-note.component';
 import { AddNoteComponent } from './text-notes/add-note/add-note.component';
 import { StyleTextDirective } from './style-text/style-text.directive';
+import { NotesService } from './services/notes.service';
+import { LoggingService } from './services/logging.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import { StyleTextDirective } from './style-text/style-text.directive';
     MatButtonModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [NotesService, LoggingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

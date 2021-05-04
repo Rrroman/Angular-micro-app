@@ -1,22 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggingService } from 'src/app/services/logging.service';
 import { NotesService } from 'src/app/services/notes.service';
 
 @Component({
   selector: 'app-add-note',
   templateUrl: './add-note.component.html',
   styleUrls: ['./add-note.component.scss'],
-  providers: [LoggingService],
 })
 export class AddNoteComponent implements OnInit {
   note = '';
   isTyping = false;
   color: string;
+  typingStatusDelay = 2000;
 
-  constructor(
-    private loggingService: LoggingService,
-    private notesService: NotesService
-  ) {}
+  constructor(private notesService: NotesService) {}
 
   ngOnInit(): void {}
 
@@ -31,16 +27,12 @@ export class AddNoteComponent implements OnInit {
     this.isTyping = true;
     setTimeout(() => {
       this.isTyping = false;
-    }, 2000);
+    }, this.typingStatusDelay);
   }
 
-  onNoteAdded(event): void {
+  onNoteAdded(): void {
     this.notesService.onNoteAdded(this.note);
-
     this.note = '';
-    this.loggingService.logEventToConsole(
-      event.target.querySelector('.mat-button-wrapper').textContent
-    );
   }
 
   colorize(): void {
