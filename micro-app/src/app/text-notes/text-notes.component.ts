@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotesService } from '../services/notes.service';
 
 @Component({
   selector: 'app-text-notes',
@@ -6,23 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./text-notes.component.scss'],
 })
 export class TextNotesComponent implements OnInit {
-  notes: Array<string> = [];
+  notes: Array<string>;
 
-  constructor() {}
+  constructor(private notesService: NotesService) {}
 
   ngOnInit(): void {
-    if (localStorage.getItem('notes')?.length > 0) {
-      this.notes.push(...JSON.parse(localStorage.getItem('notes')));
-    }
+    this.notes = this.notesService.notes;
   }
 
-  onNoteDeleted(noteData: { currentNote: string }): void {
-    this.notes = this.notes.filter((note) => note !== noteData.currentNote);
-    localStorage.setItem('notes', JSON.stringify(this.notes));
-  }
+  // ngOnInit(): void {
+  // if (localStorage.getItem('notes')?.length > 0) {
+  //   this.notes.push(...JSON.parse(localStorage.getItem('notes')));
+  // }
+  // }
 
-  onNoteAdded(note: string): void {
-    this.notes.push(note);
-    localStorage.setItem('notes', JSON.stringify(this.notes));
-  }
+  // onNoteDeleted(noteData: { currentNote: string }): void {
+  //   this.notes = this.notes.filter((note) => note !== noteData.currentNote);
+  //   localStorage.setItem('notes', JSON.stringify(this.notes));
+  // }
+
+  // onNoteAdded(note: string): void {
+  //   this.notes.push(note);
+  //   localStorage.setItem('notes', JSON.stringify(this.notes));
+  // }
 }

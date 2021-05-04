@@ -1,13 +1,12 @@
 <section class="notes__container">
-  <app-add-note (noteAdded)="onNoteAdded($event)"></app-add-note>
+  <app-add-note></app-add-note>
   <ul>
     <app-text-note
       *ngFor="let note of notes; let i = index"
       [noteIndex]="i"
       [note]="note"
-      (deleteNote)="onNoteDeleted($event)"
-      ><mat-icon>delete</mat-icon></app-text-note
-    >
+      ><mat-icon>delete</mat-icon>
+    </app-text-note>
   </ul>
   <p appStyleText>This text is styled with help of attribute directive</p>
 </section>

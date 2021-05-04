@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { LoggingService } from 'src/app/logging.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { LoggingService } from 'src/app/services/logging.service';
+import { NotesService } from 'src/app/services/notes.service';
 
 @Component({
   selector: 'app-text-note',
@@ -10,14 +11,16 @@ import { LoggingService } from 'src/app/logging.service';
 export class TextNoteComponent implements OnInit {
   @Input() note: string;
   @Input() noteIndex: number;
-  @Output() deleteNote = new EventEmitter<{ currentNote: string }>();
 
-  constructor(private loggingService: LoggingService) {}
+  constructor(
+    private loggingService: LoggingService,
+    private notesService: NotesService
+  ) {}
 
   ngOnInit(): void {}
 
   onNoteDeleted(event): void {
-    this.deleteNote.emit({ currentNote: this.note });
+    this.notesService.onNoteDeleted({ currentNote: this.note });
     this.loggingService.logEventToConsole(event.target.textContent);
   }
 }

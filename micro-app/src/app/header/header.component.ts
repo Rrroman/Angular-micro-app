@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotesService } from '../services/notes.service';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  notes: Array<string>;
 
-  ngOnInit(): void {}
+  constructor(private notesService: NotesService) {}
+
+  ngOnInit(): void {
+    this.notes = this.notesService.notes;
+  }
 }
