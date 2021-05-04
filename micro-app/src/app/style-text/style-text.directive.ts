@@ -15,6 +15,7 @@ export class StyleTextDirective implements OnInit {
       'border-radius': '10px',
       color: 'darkslategrey',
       'text-align': 'center',
+      marginTop: '5px',
     };
 
     Object.keys(allStyles).forEach((styleName) => {

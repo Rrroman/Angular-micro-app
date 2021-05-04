@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoggingService } from 'src/app/services/logging.service';
 import { NotesService } from 'src/app/services/notes.service';
 
@@ -9,7 +9,6 @@ import { NotesService } from 'src/app/services/notes.service';
   providers: [LoggingService],
 })
 export class AddNoteComponent implements OnInit {
-  // @Output() noteAdded = new EventEmitter<string>();
   note = '';
   isTyping = false;
   color: string;
@@ -36,7 +35,6 @@ export class AddNoteComponent implements OnInit {
   }
 
   onNoteAdded(event): void {
-    // this.noteAdded.emit(this.note);
     this.notesService.onNoteAdded(this.note);
 
     this.note = '';
