@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { NotesService } from 'src/app/services/notes.service';
 
 @Component({
@@ -7,10 +8,11 @@ import { NotesService } from 'src/app/services/notes.service';
   templateUrl: './text-note.component.html',
   styleUrls: ['./text-note.component.scss'],
 })
-export class TextNoteComponent implements OnInit {
+export class TextNoteComponent implements OnInit, OnDestroy {
   @Input() note: string;
   @Input() noteIndex: number;
   isOpen: boolean;
+  paramSubscription: Subscription;
 
   constructor(
     private notesService: NotesService,
@@ -25,17 +27,17 @@ export class TextNoteComponent implements OnInit {
       const allNotes = this.notesService.notes;
       this.note = allNotes[id];
     }
-    this.route.params.subscribe((params: Params) => {
+    this.paramSubscription = this.route.params.subscribe((params: Params) => {
       if (params.id) {
         this.notesService.isOpen = false;
-        console.log('Should be false');
-        console.log('it is ' + this.notesService.isOpen);
       } else if (params.id && params.id.length > 0) {
         this.notesService.isOpen = true;
-        console.log('Should be true');
-        console.log('it is ' + this.notesService.isOpen);
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.paramSubscription.unsubscribe();
   }
 
   onOpen(): void {
