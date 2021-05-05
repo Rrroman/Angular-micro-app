@@ -9,6 +9,12 @@
 
   background-color: cornflowerblue;
   border-radius: 10px;
+
+  &__btn-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 }
 
 .success {

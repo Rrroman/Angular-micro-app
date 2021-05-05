@@ -4,6 +4,7 @@ import { LoggingService } from './logging.service';
 @Injectable()
 export class NotesService {
   notes: Array<string> = [];
+  isOpen = false;
 
   constructor(private loggingService: LoggingService) {}
 

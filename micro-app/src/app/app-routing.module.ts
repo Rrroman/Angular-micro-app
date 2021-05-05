@@ -4,12 +4,14 @@ import { HomeComponent } from './home/home.component';
 import { InfoComponent } from './info/info.component';
 import { TextNotesComponent } from './text-notes/text-notes.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { TextNoteComponent } from './text-notes/text-note/text-note.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'info', component: InfoComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'text-notes', component: TextNotesComponent },
+  { path: 'text-notes/:id', component: TextNoteComponent },
 ];
 
 @NgModule({
