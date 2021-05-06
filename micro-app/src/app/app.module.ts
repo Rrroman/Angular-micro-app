@@ -18,6 +18,7 @@ import { AddNoteComponent } from './text-notes/add-note/add-note.component';
 import { StyleTextDirective } from './style-text/style-text.directive';
 import { NotesService } from './services/notes.service';
 import { LoggingService } from './services/logging.service';
+import { CurrencyExchangeComponent } from './currency-exchange/currency-exchange.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LoggingService } from './services/logging.service';
     TextNoteComponent,
     AddNoteComponent,
     StyleTextDirective,
+    CurrencyExchangeComponent,
   ],
   imports: [
     BrowserModule,

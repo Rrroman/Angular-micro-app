@@ -5,6 +5,7 @@ import { InfoComponent } from './info/info.component';
 import { TextNotesComponent } from './text-notes/text-notes.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { TextNoteComponent } from './text-notes/text-note/text-note.component';
+import { CurrencyExchangeComponent } from './currency-exchange/currency-exchange.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'projects', component: ProjectsComponent },
   { path: 'text-notes', component: TextNotesComponent },
   { path: 'text-notes/:id', component: TextNoteComponent },
+  { path: 'currency-exchange', component: CurrencyExchangeComponent },
 ];
 
 @NgModule({
