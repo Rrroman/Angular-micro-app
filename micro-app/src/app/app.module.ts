@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CurrencyExchangeComponent } from './currency-exchange/currency-exchange.component';
@@ -25,6 +26,7 @@ import { StyleTextDirective } from './style-text/style-text.directive';
 import { AddNoteComponent } from './text-notes/add-note/add-note.component';
 import { TextNoteComponent } from './text-notes/text-note/text-note.component';
 import { TextNotesComponent } from './text-notes/text-notes.component';
+import { CurrencyChartComponent } from './currency-exchange/currency-chart/currency-chart.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { TextNotesComponent } from './text-notes/text-notes.component';
     AddNoteComponent,
     StyleTextDirective,
     CurrencyExchangeComponent,
+    CurrencyChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { TextNotesComponent } from './text-notes/text-notes.component';
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    ChartsModule,
   ],
   providers: [NotesService, LoggingService, CurrencyService],
   bootstrap: [AppComponent],
