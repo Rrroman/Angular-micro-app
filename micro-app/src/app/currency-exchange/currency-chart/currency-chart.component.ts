@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrencyService } from 'src/app/services/currency.service';
 
 @Component({
   selector: 'app-currency-chart',
@@ -6,28 +7,47 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./currency-chart.component.scss'],
 })
 export class CurrencyChartComponent implements OnInit {
+  // chartData: Array<{
+  //   data: Array<string>;
+  //   label: string;
+  // }>;
+  selectedCurrency: string = 'USD';
+  range: any;
+
+  // chartLabels: Array<string> = [];
+
+  chartOptions = {
+    responsive: true,
+
+    mode: 'nearest',
+    intersect: true,
+  };
+
   chartData = [
     {
       data: [330, 600, 260, 700],
-      label: 'Account A',
-    },
-    {
-      data: [120, 455, 100, 340],
-      label: 'Account B',
-    },
-    {
-      data: [45, 67, 800, 500],
-      label: 'Account C',
+      label: 'Currency',
     },
   ];
 
   chartLabels = ['January', 'February', 'March', 'April'];
 
-  chartOptions = {
-    responsive: true,
-  };
+  constructor(private currencyService: CurrencyService) {}
 
-  constructor() {}
+  ngOnInit(): void {
+    // this.chartLabels = this.currencyService.range;
+    this.range = this.currencyService.getCurrencies('20210101');
 
-  ngOnInit(): void {}
+    // this.chartData = [
+    //   {
+    //     data: this.range,
+    //     label: `${this.selectedCurrency} - rate to UAH`,
+    //   },
+    // ];
+
+    this.currencyService.selectedCurrency.subscribe((currency: string) => {
+      this.selectedCurrency = currency;
+      this.chartData[0].label = `${currency} - currency rate to UAH`;
+    });
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { Currency, CurrencyService } from '../services/currency.service';
 
 @Component({
@@ -23,5 +24,13 @@ export class CurrencyExchangeComponent implements OnInit {
       .subscribe((data) => {
         this.currencies = data;
       });
+  }
+
+  onSelect(selectedCurrency: string): void {
+    this.currencyService.selectedCurrency.emit(selectedCurrency);
+  }
+
+  onDatePick(start: HTMLInputElement, end: HTMLInputElement) {
+    this.currencyService.getPickedData(start.value, end.value);
   }
 }

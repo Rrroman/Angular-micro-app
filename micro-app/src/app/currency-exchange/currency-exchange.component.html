@@ -3,7 +3,10 @@
     <legend>Parameters</legend>
     <mat-form-field>
       <mat-label>Currency</mat-label>
-      <mat-select [(value)]="selectedCurrency">
+      <mat-select
+        [(value)]="selectedCurrency"
+        (selectionChange)="onSelect($event.value)"
+      >
         <mat-option *ngFor="let currency of currencies" [value]="currency.cc">
           {{ currency.cc }} - {{ currency.txt }}
         </mat-option>
@@ -13,15 +16,23 @@
     <mat-form-field appearance="fill">
       <mat-label>Enter a date range</mat-label>
       <mat-date-range-input [rangePicker]="picker" [formGroup]="range">
-        <input matStartDate placeholder="Start date" formControlName="start" />
-        <input matEndDate placeholder="End date" formControlName="end" />
+        <input
+          matStartDate
+          placeholder="Start date"
+          formControlName="start"
+          #dateRangeStart
+        />
+        <input
+          matEndDate
+          placeholder="End date"
+          formControlName="end"
+          #dateRangeEnd
+          (dateChange)="onDatePick(dateRangeStart, dateRangeEnd)"
+        />
       </mat-date-range-input>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>
     </mat-form-field>
   </fieldset>
 </form>
-<p>{{ selectedCurrency }}</p>
-<p>{{ range.value.start | date: "ddMMy" }}</p>
-<p>{{ range.value.end | date: "ddMMy" }}</p>
 <app-currency-chart></app-currency-chart>
