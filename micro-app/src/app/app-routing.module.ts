@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'text-notes', component: TextNotesComponent },
   { path: 'text-notes/:id', component: TextNoteComponent },
   { path: 'currency-exchange', component: CurrencyExchangeComponent },
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({

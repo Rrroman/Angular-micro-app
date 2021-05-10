@@ -37,10 +37,28 @@ export class CurrencyService {
   }
 
   getPickedData(start: string, end: string) {
+    const oneSecond = 1000;
+    const secondsInOneHour = 3600;
+    const hoursInOneDay = 24;
+    const millisecondsInOneDay = hoursInOneDay * secondsInOneHour * oneSecond;
+
     const startDate = new Date(start);
     const endDate = new Date(end);
 
-    console.log(endDate.getTime() - startDate.valueOf());
+    const tempArr: Array<any> = [];
+
+    for (
+      let i = startDate.getTime();
+      i <= endDate.getTime();
+      i += millisecondsInOneDay
+    ) {
+      const dateForUrl = parseInt(formatDate(i, 'ddMMyyyy', 'en-US'));
+      console.log(dateForUrl);
+
+      tempArr.push(this.getCurrencies(this.urlMaker(dateForUrl)));
+    }
+
+    console.log(tempArr);
 
     // if (start && end) {
     //   const tempArray = [];

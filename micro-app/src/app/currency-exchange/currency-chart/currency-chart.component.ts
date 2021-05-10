@@ -35,8 +35,10 @@ export class CurrencyChartComponent implements OnInit {
   constructor(private currencyService: CurrencyService) {}
 
   ngOnInit(): void {
+    // this.range = this.currencyService.getCurrencies(20210101);
+    //==========
+
     // this.chartLabels = this.currencyService.range;
-    this.range = this.currencyService.getCurrencies('20210101');
 
     // this.chartData = [
     //   {
