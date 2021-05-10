@@ -14,11 +14,11 @@ export type Currency = {
   providedIn: 'root',
 })
 export class CurrencyService {
-  currencyUrl =
+  currencyListUrl =
     'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=';
+  currencyUrl =
+    'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=';
   urlEnding = '&json';
-  url =
-    'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=20181111&json';
 
   selectedCurrency = new EventEmitter<string>();
 
@@ -28,8 +28,8 @@ export class CurrencyService {
 
   constructor(private http: HttpClient) {}
 
-  urlMaker(date: number) {
-    return `${this.currencyUrl}${date}${this.urlEnding}`;
+  urlMaker(url: string, date: number, urlEnding: string) {
+    return `${url}${date}${urlEnding}`;
   }
 
   getCurrencies(date: string) {
@@ -55,7 +55,11 @@ export class CurrencyService {
       const dateForUrl = parseInt(formatDate(i, 'ddMMyyyy', 'en-US'));
       console.log(dateForUrl);
 
-      tempArr.push(this.getCurrencies(this.urlMaker(dateForUrl)));
+      tempArr.push(
+        this.getCurrencies(
+          this.urlMaker(this.currencyUrl, dateForUrl, this.urlEnding)
+        )
+      );
     }
 
     console.log(tempArr);

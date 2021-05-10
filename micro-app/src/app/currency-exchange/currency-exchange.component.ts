@@ -20,7 +20,13 @@ export class CurrencyExchangeComponent implements OnInit {
 
   ngOnInit(): void {
     this.currencyService
-      .getCurrencies(this.currencyService.urlMaker(20181111))
+      .getCurrencies(
+        this.currencyService.urlMaker(
+          this.currencyService.currencyListUrl,
+          20181111,
+          this.currencyService.urlEnding
+        )
+      )
       .subscribe((data) => {
         this.currencies = data;
       });
