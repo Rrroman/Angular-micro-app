@@ -16,7 +16,7 @@ export class CurrencyChartComponent implements OnInit {
 
   chartData = [
     {
-      data: [330, 600, 260, 700],
+      data: [],
       label: 'Currency',
     },
   ];

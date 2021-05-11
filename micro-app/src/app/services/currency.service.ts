@@ -61,7 +61,9 @@ export class CurrencyService {
     const startDate = new Date(start);
     const endDate = new Date(end);
 
-    this.allCurrency = [];
+    this.allCurrency.length = 0;
+    this.ratesData.length = 0;
+    this.exchangeDate.length = 0;
 
     for (
       let i = startDate.getTime();
