@@ -1,6 +1,7 @@
 import { DatePipe, formatDate } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export type Currency = {
   r030: number;
@@ -21,18 +22,33 @@ export class CurrencyService {
   urlEnding = '&json';
 
   selectedCurrency = new EventEmitter<string>();
+  selectedCurrencyField: string;
+  pickedCurrency: string;
 
   range: Array<string> = [];
   pickedData: Array<string>;
   currencyData: Array<Currency>;
+  allCurrency: Currency[] = [];
+  allDates: Array<string>;
+  exchangeDate: Array<string> = [];
+  ratesData: Array<number> = [];
 
   constructor(private http: HttpClient) {}
 
-  urlMaker(url: string, date: number, urlEnding: string) {
+  urlCurrency(
+    url: string,
+    currencyName: string,
+    date: number | string,
+    urlEnding: string
+  ) {
+    return `${url}${currencyName}&date=${date}${urlEnding}`;
+  }
+
+  urlMaker(url: string, date: number | string, urlEnding: string) {
     return `${url}${date}${urlEnding}`;
   }
 
-  getCurrencies(date: string) {
+  getCurrencies(date: string): Observable<Currency[]> {
     return this.http.get<Array<Currency>>(date);
   }
 
@@ -45,30 +61,27 @@ export class CurrencyService {
     const startDate = new Date(start);
     const endDate = new Date(end);
 
-    const tempArr: Array<any> = [];
+    this.allCurrency = [];
 
     for (
       let i = startDate.getTime();
       i <= endDate.getTime();
       i += millisecondsInOneDay
     ) {
-      const dateForUrl = parseInt(formatDate(i, 'ddMMyyyy', 'en-US'));
-      console.log(dateForUrl);
+      const dateForUrl = formatDate(i, 'yyyyMMdd', 'en-US');
 
-      tempArr.push(
-        this.getCurrencies(
-          this.urlMaker(this.currencyUrl, dateForUrl, this.urlEnding)
+      this.getCurrencies(
+        this.urlCurrency(
+          this.currencyUrl,
+          this.pickedCurrency,
+          dateForUrl,
+          this.urlEnding
         )
-      );
+      ).subscribe((data: any) => {
+        this.allCurrency.push(...data);
+        this.exchangeDate.push(data[0].exchangedate);
+        this.ratesData.push(data[0].rate);
+      });
     }
-
-    console.log(tempArr);
-
-    // if (start && end) {
-    //   const tempArray = [];
-    //   tempArray.push(formatDate(start, 'ddMMyyyy', 'en-US'));
-    //   tempArray.push(formatDate(end, 'ddMMyyyy', 'en-US'));
-    //   this.pickedData = tempArray;
-    // }
   }
 }

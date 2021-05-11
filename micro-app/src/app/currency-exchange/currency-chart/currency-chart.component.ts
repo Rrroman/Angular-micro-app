@@ -7,15 +7,6 @@ import { CurrencyService } from 'src/app/services/currency.service';
   styleUrls: ['./currency-chart.component.scss'],
 })
 export class CurrencyChartComponent implements OnInit {
-  // chartData: Array<{
-  //   data: Array<string>;
-  //   label: string;
-  // }>;
-  selectedCurrency: string = 'USD';
-  range: any;
-
-  // chartLabels: Array<string> = [];
-
   chartOptions = {
     responsive: true,
 
@@ -30,26 +21,15 @@ export class CurrencyChartComponent implements OnInit {
     },
   ];
 
-  chartLabels = ['January', 'February', 'March', 'April'];
+  chartLabels: Array<string> = [];
 
   constructor(private currencyService: CurrencyService) {}
 
   ngOnInit(): void {
-    // this.range = this.currencyService.getCurrencies(20210101);
-    //==========
-
-    // this.chartLabels = this.currencyService.range;
-
-    // this.chartData = [
-    //   {
-    //     data: this.range,
-    //     label: `${this.selectedCurrency} - rate to UAH`,
-    //   },
-    // ];
-
     this.currencyService.selectedCurrency.subscribe((currency: string) => {
-      this.selectedCurrency = currency;
       this.chartData[0].label = `${currency} - currency rate to UAH`;
+      this.chartData[0].data = this.currencyService.ratesData;
+      this.chartLabels = this.currencyService.exchangeDate;
     });
   }
 }

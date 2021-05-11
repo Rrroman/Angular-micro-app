@@ -19,11 +19,13 @@ export class CurrencyExchangeComponent implements OnInit {
   constructor(private currencyService: CurrencyService) {}
 
   ngOnInit(): void {
+    const dateToGetCurrencyNames = 20210511;
+
     this.currencyService
       .getCurrencies(
         this.currencyService.urlMaker(
           this.currencyService.currencyListUrl,
-          20181111,
+          dateToGetCurrencyNames,
           this.currencyService.urlEnding
         )
       )
@@ -33,6 +35,7 @@ export class CurrencyExchangeComponent implements OnInit {
   }
 
   onSelect(selectedCurrency: string): void {
+    this.currencyService.pickedCurrency = selectedCurrency;
     this.currencyService.selectedCurrency.emit(selectedCurrency);
   }
 
