@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { Currency, CurrencyService } from '../services/currency.service';
 
 @Component({
@@ -11,6 +10,7 @@ import { Currency, CurrencyService } from '../services/currency.service';
 export class CurrencyExchangeComponent implements OnInit {
   currencies: Array<Currency>;
   selectedCurrency: string;
+
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl(),
@@ -23,7 +23,7 @@ export class CurrencyExchangeComponent implements OnInit {
 
     this.currencyService
       .getCurrencies(
-        this.currencyService.urlMaker(
+        this.currencyService.buildUrlForCurrencyNames(
           this.currencyService.currencyListUrl,
           dateToGetCurrencyNames,
           this.currencyService.urlEnding

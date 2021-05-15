@@ -1,4 +1,4 @@
-import { DatePipe, formatDate } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -30,12 +30,12 @@ export class CurrencyService {
   currencyData: Array<Currency>;
   allCurrency: Currency[] = [];
   allDates: Array<string>;
-  exchangeDate: Array<string> = [];
+  exchangeDate: Array<any> = [];
   ratesData: Array<number> = [];
 
   constructor(private http: HttpClient) {}
 
-  urlCurrency(
+  buildUrlCurrency(
     url: string,
     currencyName: string,
     date: number | string,
@@ -44,7 +44,11 @@ export class CurrencyService {
     return `${url}${currencyName}&date=${date}${urlEnding}`;
   }
 
-  urlMaker(url: string, date: number | string, urlEnding: string) {
+  buildUrlForCurrencyNames(
+    url: string,
+    date: number | string,
+    urlEnding: string
+  ) {
     return `${url}${date}${urlEnding}`;
   }
 
@@ -52,11 +56,12 @@ export class CurrencyService {
     return this.http.get<Array<Currency>>(date);
   }
 
-  getPickedData(start: string, end: string) {
-    const oneSecond = 1000;
-    const secondsInOneHour = 3600;
-    const hoursInOneDay = 24;
-    const millisecondsInOneDay = hoursInOneDay * secondsInOneHour * oneSecond;
+  async getPickedData(start: string, end: string) {
+    const ONE_SECOND = 1000;
+    const SECONDS_IN_ONE_HOUR = 3600;
+    const HOURS_IN_ONE_DAY = 24;
+    const MILLISECONDS_IN_ONE_DAY =
+      HOURS_IN_ONE_DAY * SECONDS_IN_ONE_HOUR * ONE_SECOND;
 
     const startDate = new Date(start);
     const endDate = new Date(end);
@@ -68,22 +73,24 @@ export class CurrencyService {
     for (
       let i = startDate.getTime();
       i <= endDate.getTime();
-      i += millisecondsInOneDay
+      i += MILLISECONDS_IN_ONE_DAY
     ) {
       const dateForUrl = formatDate(i, 'yyyyMMdd', 'en-US');
 
-      this.getCurrencies(
-        this.urlCurrency(
+      await this.getCurrencies(
+        this.buildUrlCurrency(
           this.currencyUrl,
           this.pickedCurrency,
           dateForUrl,
           this.urlEnding
         )
-      ).subscribe((data: any) => {
-        this.allCurrency.push(...data);
-        this.exchangeDate.push(data[0].exchangedate);
-        this.ratesData.push(data[0].rate);
-      });
+      )
+        .toPromise()
+        .then((data) => {
+          this.allCurrency.push(...data);
+          this.exchangeDate.push(data[0].exchangedate);
+          this.ratesData.push(data[0].rate);
+        });
     }
   }
 }
